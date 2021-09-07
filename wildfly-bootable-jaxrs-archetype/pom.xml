@@ -13,7 +13,8 @@
     <artifactId>wildfly-bootable-jaxrs-archetype</artifactId>
     <packaging>maven-archetype</packaging>
 
-    <name>wildfly-bootable-jaxrs-archetype</name>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Archetype for creating a jaxrs microprofile application with wildfly bootable jar</description>
 
     <build>
         <extensions>
@@ -33,7 +34,5 @@
             </plugins>
         </pluginManagement>
     </build>
-
-    <description>An example of how to use JAX-RS resources</description>
 
 </project>
