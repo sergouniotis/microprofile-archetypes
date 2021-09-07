@@ -8,8 +8,9 @@
     <version>1.0.0</version>
     <packaging>pom</packaging>
 
-    <name>The parent module of the archetypes</name>
-    <description>Parent module</description>
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Archetypes for creating microprofile applications</description>
+    <url>https://github.com/sergouniotis/microprofile-archetypes</url>
 
     <licenses>
         <license>
@@ -26,9 +27,9 @@
         </developer>
     </developers>
     <scm>
-        <connection>scm:git:git@github.com:dsibilio/badge-maker.git</connection>
-        <developerConnection>scm:git:ssh://github.com:dsibilio/badge-maker.git</developerConnection>
-        <url>https://github.com/dsibilio/badge-maker/tree/main</url>
+        <connection>scm:git:git@github.com:sergouniotis/microprofile-archetypes.git</connection>
+        <developerConnection>scm:git:ssh://github.com:sergouniotis/microprofile-archetypes.git</developerConnection>
+        <url>https://github.com/sergouniotis/microprofile-archetypes.git</url>
     </scm>
 
     <distributionManagement>
