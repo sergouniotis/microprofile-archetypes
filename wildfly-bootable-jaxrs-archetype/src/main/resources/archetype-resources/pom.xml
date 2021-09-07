@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>${groupId}</groupId>
+    <artifactId>${artifactId}</artifactId>
+    <packaging>war</packaging>
+    <version>${version}</version>
+
+    <name>WildFly Bootable JAR - JAX-RS Example</name>
+    <description>An example of how to use JAX-RS resources</description>
+
+    <properties>
+    	<maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <plugin.fork.embedded>true</plugin.fork.embedded>
+    	<version.wildfly>23.0.0.Final</version.wildfly>
+        <version.wildfly.maven.plugin>4.0.3.Final</version.wildfly.maven.plugin>
+        <version.dockerfile.maven.plugin>1.4.13</version.dockerfile.maven.plugin>
+    	<failOnMissingWebXml>false</failOnMissingWebXml>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>                
+    </properties>
+
+    <dependencies>
+            <dependency>
+                <groupId>jakarta.platform</groupId>
+                <artifactId>jakarta.jakartaee-api</artifactId>
+                <version>8.0.0</version>
+                <scope>provided</scope>
+            </dependency>
+    </dependencies>
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-jar-maven-plugin</artifactId>
+                <version>${version.wildfly.maven.plugin}</version>        
+                <configuration>
+                    <feature-pack-location>wildfly@maven(org.jboss.universe:community-universe)#${version.wildfly}</feature-pack-location>
+                    <layers>
+                        <layer>jaxrs</layer>
+                        <layer>management</layer>
+                    </layers>
+                    <excluded-layers>
+                        <layer>deployment-scanner</layer>
+                    </excluded-layers>
+                    <plugin-options>
+                        <jboss-fork-embedded>${plugin.fork.embedded}</jboss-fork-embedded>
+                    </plugin-options>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>package</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+                <version>${version.dockerfile.maven.plugin}</version>
+                <executions>
+                    <execution>
+                        <id>default</id>
+                        <goals>
+                            <goal>build</goal>
+                            <!-- <goal>push</goal> -->
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <repository>${project.groupId}/${project.artifactId}</repository>
+                    <tag>${project.version}</tag>
+                    <pullNewerImage>false</pullNewerImage>
+                    <dockerfile>Dockerfile</dockerfile>
+                    <buildArgs>
+                        <APP_NAME>${project.artifactId}</APP_NAME>
+                        <APP_NAME>${project.artifactId}-bootable</APP_NAME>
+                    </buildArgs>                    
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
+</project>
