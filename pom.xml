@@ -29,7 +29,7 @@
     <scm>
         <connection>scm:git:git@github.com:sergouniotis/microprofile-archetypes.git</connection>
         <developerConnection>scm:git:ssh://github.com:sergouniotis/microprofile-archetypes.git</developerConnection>
-        <url>https://github.com/sergouniotis/microprofile-archetypes.git</url>
+        <url>https://github.com/sergouniotis/microprofile-archetypes/tree/main</url>
     </scm>
 
     <distributionManagement>
