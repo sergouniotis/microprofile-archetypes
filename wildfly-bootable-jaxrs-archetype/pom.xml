@@ -4,8 +4,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>gr.sergouniotis.archetypes.microprofile</groupId>
-        <artifactId>parent</artifactId>
+        <groupId>gr.sergouniotis</groupId>
+        <artifactId>microprofile-archetypes-parent</artifactId>
         <version>1.0.0</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
