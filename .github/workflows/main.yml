@@ -33,7 +33,10 @@ jobs:
         git config user.email "sergouniotis@gmail.com"      
       
     - name: Commit new version
-      run: git commit -a -m "Bump version"        
+      run: git commit -a -m "Bump version"  
+      
+    - name: Push commits
+      run: git push origin main
 
     - name: Deploy with Maven
       run: mvn -B clean deploy -Pci-cd
