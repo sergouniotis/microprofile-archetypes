@@ -1,8 +1,5 @@
 FROM azul/zulu-openjdk-alpine:8
 
-RUN apk add bash curl nss tree \
-        && rm -rf /var/cache/apk/*
-
 ARG APP_NAME
 
 ENV APP_NAME ${APP_NAME}
